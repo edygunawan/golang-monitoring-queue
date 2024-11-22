@@ -1,1 +1,50 @@
-node_modules
+# General Ignored Files
+.DS_Store              # macOS-specific metadata
+*.log                  # Log files
+logs/                  # Custom log folder
+*.pid                  # PID files
+.env                   # Environment variable files
+.env.*                 # Additional environment files
+.idea/                 # JetBrains IDEs (like WebStorm, GoLand)
+.vscode/               # VSCode configuration files
+*.swp                  # Swap files
+*.bak                  # Backup files
+*.tmp                  # Temporary files
+Thumbs.db              # Windows-specific metadata
+*.~lock.*              # LibreOffice lock files
+
+# Node.js (Next.js Service)
+node_modules/          # Node.js dependencies
+.next/                 # Next.js build output
+out/                   # Exported static build
+npm-debug.log*         # NPM debug log
+yarn-debug.log*        # Yarn debug log
+yarn-error.log*        # Yarn error log
+coverage/              # Test coverage reports
+dist/                  # General build output
+*.tgz                  # Compressed packages
+.cache/                # Cache files for build tools
+
+# Golang (golang_api and golang_worker)
+*.exe                  # Windows executables
+*.out                  # Binary artifacts
+*.test                 # Test binaries
+vendor/                # Vendor dependencies if vendored (optional)
+debug/                 # Debugging data
+.cover/                # Code coverage reports
+*.prof                 # Profiling data
+
+# Docker
+.dockerignore          # Ignore this file itself
+docker-compose.override.yml # Optional local overrides
+*.env                  # Environment files
+.env.*                 # Additional environment files
+docker-compose.logs    # Logs for Docker Compose
+
+# MongoDB
+mongo_data/            # MongoDB data directory (bind-mounted in volumes)
+mongodb/
+
+# RabbitMQ
+rabbitmq_data/         # RabbitMQ data directory (if bind-mounted)
+rabbitmq/
