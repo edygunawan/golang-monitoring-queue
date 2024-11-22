@@ -3,7 +3,7 @@ package main
 import (
     "github.com/gin-gonic/gin"
     "net/http"
-    "golang_api/app/rabbitmq" // Import the rabbitmq package
+    "golang_api/app/mq" // Import the rabbitmq package
     "log"
 )
 
