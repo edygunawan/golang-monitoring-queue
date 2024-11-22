@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # RabbitMQ broker port
+      - "15672:15672" # RabbitMQ management console port
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  golang:
+    image: golang:1.23.3
+    container_name: golang-service
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: go run main.go
+    depends_on:
+      - rabbitmq
+      - mongodb
+
+  nextjs:
+    image: node:22-bullseye
+    container_name: nextjs-service
+    build:
+      context: ./nextjs
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./nextjs:/app
+    working_dir: /app
+    command: npm run dev
+    depends_on:
+      - rabbitmq
+      - mongodb
+
+volumes:
+  mongo_data:
