@@ -6,13 +6,13 @@ WORKDIR /app/dashboard
 
 
 # Copy package.json and package-lock.json
-COPY package.json package-lock.json ./
+# COPY ./package.json ./package-lock.json ./
 
 # Install dependencies
 RUN npm install
 
 # Copy the rest of the application code
-COPY . .
+# COPY . .
 
 # Expose the port used by the Next.js application
 EXPOSE 3000
