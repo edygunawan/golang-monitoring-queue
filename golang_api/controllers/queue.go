@@ -115,7 +115,7 @@ func GetQueueMessages(c *gin.Context) {
 
 	/* Example failed message that will pushed back to queue  from nextjs app */
 	failedQueue := QueueDto{
-		Message: "Nest message",
+		Message: "Next message",
 		Status:  "failed",
 	}
 	queueMessages = append(queueMessages, failedQueue)
